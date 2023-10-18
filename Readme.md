@@ -17,7 +17,7 @@ Existen varias formas de acceder a la API:<br>
 4-Con Postman, en BasicAuth pasando la clave como username<br>
 
  ### **Recursos:**<br> 
- En este Link se encuentran todos los recursos para llamar a la [API] (https://devdocs.prestashop-project.org/8/webservice/resources/) <br>
+ ### **En este Link se encuentran todos los recursos para llamar a la [ApiResources](https://devdocs.prestashop-project.org/8/webservice/resources/) <br>
 
 
 ### **Resumen de como se obtienen las Facturas: <br>
@@ -26,7 +26,7 @@ En resumen, el código realiza una serie de llamadas a la API de PrestaShop para
 facturas obtenidas en la primera llamada. <br>
 
 ### **Detalle: <br>
-# **Primera Llamada a la API:**<br>
+## **Primera Llamada a la API:**<br>
 URL: https://tiendaprestashop.lndo.site/api/orders<br>
 Propósito: Esta llamada obtiene una lista de IDs de facturas desde la API de PrestaShop.<br>
 Datos Obtenidos: Se recibe un archivo XML que contiene una lista de IDs de facturas.<br>
@@ -34,27 +34,27 @@ Bucle para Detalles de Facturas:<br>
 Propósito: Un bucle recorre cada factura en la lista obtenida anteriormente y realiza solicitudes adicionales para obtener detalles específicos de cada factura.<br>
 
 
-# **Segunda Llamada a la API (Dentro del bucle):**<br>
+## **Segunda Llamada a la API (Dentro del bucle):**<br>
 URL: https://tiendaprestashop.lndo.site/api/orders/{ID_FACTURA}<br>
 Propósito: Esta llamada obtiene detalles específicos de una factura individual, como fechas, métodos de pago y más.<br>
 Datos Obtenidos: Un archivo XML que contiene detalles de una factura en particular.<br>
 
-# **Tercera Llamada a la API (Dentro del bucle):**<br>
+## **Tercera Llamada a la API (Dentro del bucle):**<br>
 URL: http://tiendaprestashop.lndo.site/api/addresses/{ID_ADDRESS}<br>
 Propósito: Esta llamada obtiene detalles de la dirección del cliente asociada a la factura.<br>
 Datos Obtenidos: Un archivo XML con detalles de la dirección del cliente, que incluye información como nombre, dirección, código postal, etc.<br>
 
-# **Procesamiento de Datos (Dentro del bucle):**<br>
+## **Procesamiento de Datos (Dentro del bucle):**<br>
 Propósito: Se accede a los archivos XML recibidos de las llamadas a la API para extraer información específica.<br>
 Datos Obtenidos: Se extraen datos como el ID de la factura, fechas, información de cliente, detalles de productos y más.<br>
 
-# **Construcción de Arreglos de Datos (Dentro del bucle):**<br>
+## **Construcción de Arreglos de Datos (Dentro del bucle):**<br>
 Propósito: Se estructuran y organizan los datos obtenidos en un arreglo multidimensional llamado $responseData.<br>
 Datos Obtenidos: El arreglo $responseData se llena con información detallada de cada factura, incluyendo información del cliente y detalles de productos.<br>
 
-# **Respuesta JSON:**<br>
+## **Respuesta JSON:**<br>
 Propósito: Una vez que se han procesado todos los detalles de las facturas y los clientes, se genera una respuesta JSON con la información recopilada.<br>
 Datos Obtenidos: Se devuelve un objeto JSON que contiene todos los datos procesados, organizados bajo la clave "Facturas Emitidas".<br>
 
 
-### **Link a la documentacion de la [ApiPrestashop](https://api.contasimple.com/swagger/ui/index)<br>
+### **Link a la documentacion de la [ApiPrestashop](https://devdocs.prestashop-project.org/8/basics/)<br>
